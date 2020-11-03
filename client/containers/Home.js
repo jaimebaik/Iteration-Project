@@ -7,7 +7,7 @@ import * as actions from '../actions/actions'
 
 const Home = (props) => {
     const [redirect, setRedirect] = useState(false);
-
+    //uses props.location from react-router-dom to redirect page based on if props.username is empty
     useEffect(()=>{
         if(props.location.state){
             props.setID(props.location.state.id);
