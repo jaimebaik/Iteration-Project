@@ -10,11 +10,15 @@ const url = 'http://localhost:3000/'
  * name: audi a7
  * category : car
  */
+
 const Listing = (props) => {
-  //create and array of cards
+  //create an array of cards
   const [library, setLibrary] = useState([]);
+
   useEffect(() => {
     // console.log(props.search)
+    //if the user inputs an item and category is all
+    //fetch get request to searchall route
     if (props.search.searchValue && props.search.category === 'All') {
       console.log('here i am')
       // console.log(props.search)
@@ -33,6 +37,8 @@ const Listing = (props) => {
           console.log(err)
         })
     }
+    //if the user inputs an item and category is not all
+    //fetch get request to search route with category passed in
     else if (props.search.searchValue && props.search.category !== 'All') {
       console.log('here i am 2')
       axios.get(url + 'listing/search', {
@@ -50,6 +56,7 @@ const Listing = (props) => {
           console.log(err)
         })
     }
+    //if user did not put in search bar, list everything in the database
     else {
       axios.get(url + 'listing/all')
         .then(res => {
@@ -60,7 +67,8 @@ const Listing = (props) => {
           console.log(err)
         })
     }
-  }, [])
+  }, [])//end of useEffect
+
   const cardList = library.map((el, index) => {
     return <CardList key={index} {...el} />
   })

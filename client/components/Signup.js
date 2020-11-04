@@ -5,6 +5,7 @@ import {connect} from 'react-redux'
 import * as actions from '../actions/actions'
 import {Redirect} from 'react-router-dom'
 
+//initial state for user to set signupInfo
 const initialSignupState = {
   real_name:'',
   username:'',
@@ -15,10 +16,12 @@ const initialSignupState = {
 const url = 'http://localhost:3000/'
 
 const Signup = (props) => {
+  //state props for signup
   const [signupInfo, setSignupInfo] = useState(initialSignupState);
   const [infoFromDB, setInfoFromDB] = useState({})
   const [redirect, setRedirect] = useState(false);
   
+  //after signup, check if the user is in the database for redirect
   const handleRedirect = () =>{
     axios.get(url+'account/finduser', {
       params:{
@@ -31,6 +34,7 @@ const Signup = (props) => {
     }).catch(err => console.log(err)) 
   }
 
+  //update info for the user 
   const updateInfo = (e) => {
     const {name, value} = e.target
     setSignupInfo({
@@ -39,6 +43,8 @@ const Signup = (props) => {
     })
   }
 
+  //submit button for signup page to fetch post request to server
+  //couple with handleRedirect
   const submitSignup = (e) =>{
     e.preventDefault();
     axios.post(url + 'account/signup/', {
@@ -56,6 +62,8 @@ const Signup = (props) => {
     .catch(err => console.log(err))
   }
 
+  //elements in signup component
+  //if the user did not attempt sign up yet
   return (
     redirect === false ? 
     <div className='signup-container'>
@@ -113,11 +121,12 @@ const Signup = (props) => {
     />
   )
 }
-
+//state maps to wobbeReducer
 const mapStateToProps = (state) => ({
   username: state.wobbeReducer.username
 })
-
+//set function maps to action
+//map action to dispatch which makes reducer to update state
 const mapActionToProps = {
   setUsername: actions.setUsername
 };

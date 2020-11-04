@@ -4,6 +4,7 @@ import axios from 'axios';
 import {Link} from 'react-router-dom';
 import {Redirect} from 'react-router-dom';
 
+//initial state of user to initialize loginInfo state
 const initialLoginState = {
   username: '',
   password: ''
@@ -18,9 +19,12 @@ const initialLoginState = {
 const url = 'http://localhost:3000/'
 
 const Login = (props) => {
+  //using react hook to make state props
   const [loginInfo, setLoginInfo] = useState(initialLoginState);
   const [infoFromDB, setInfoFromDB] = useState({})
   const [redirect, setRedirect] = useState(false);
+
+  //function to update loginInfo from event
   const updateInfo = (e) => {
     const {name, value} = e.target
     setLoginInfo({
@@ -29,9 +33,11 @@ const Login = (props) => {
     })
   }
 
+  //function for a submit button for login form
   const submitLogin = (e) =>{
     e.preventDefault();
     console.log("login: ",loginInfo)
+    //axios instead of fetch to make a request to a server
     axios.get(url + 'account/login', {
     params: {
       username: loginInfo.username,
@@ -40,11 +46,14 @@ const Login = (props) => {
     })
     .then(response => {
       console.log(response);
+      //if the user was found in the database, update the InfoFromDB and redirect
       if(response.status === 200){
         console.log('res: ', response.data);
         setInfoFromDB(response.data);
         setRedirect(true);
       }else {
+        //otherwise, if the user was not in the database, let user know
+        //and reset the loginInfo
         window.alert('Incorrect Username and/or Password!!!')
         setLoginInfo(initialLoginState)
       }
@@ -53,7 +62,8 @@ const Login = (props) => {
     });
   }
 
-
+    //check if user attempted login
+    //if the user did not, render login page
     return (
       redirect === false ?
       <div className='login-container'>
