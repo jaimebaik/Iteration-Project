@@ -69,9 +69,12 @@ const Listing = (props) => {
     }
   }, [])//end of useEffect
 
+  //creating an array of listing card for each item in the library state
   const cardList = library.map((el, index) => {
     return <CardList key={index} {...el} />
   })
+
+  //listing component that contains array of cardList components and footer
   return (
     <div className="listylist">
       {cardList}
@@ -79,6 +82,7 @@ const Listing = (props) => {
     </div>
   );
 }
+//state map to reducer
 const mapStateToProps = (state) => ({
   search: state.wobbeReducer.search,
   user_id: state.wobbeReducer.user_id

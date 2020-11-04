@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 import {Redirect} from 'react-router-dom'
 import {connect} from 'react-redux';
 
+//initial state of form obj
 const initialFormState = {
     name: '',
     price: 0,
@@ -12,9 +13,11 @@ const initialFormState = {
 const url = 'http://localhost:3000/'
 
 const CreateListing = (props) => {
+    //state of item info and redirect flag
     const [itemInfo, setItemInfo] = useState(initialFormState)
     const [redirect,setRedirect] = useState(false);
 
+    //updates the inputs in the create listing form
     const updateText = (e) =>{
         const {name, value} = e.target
         setItemInfo({
@@ -25,6 +28,9 @@ const CreateListing = (props) => {
     }
     //let params = [req.body.name, req.body.price, req.body.user_id, req.body.location, req.body.category_id, req.body.description]
     console.log(props)
+
+    //function for a submit button on creating a listing
+    //after response, invoke changePath to redirect
     const submitForm = (e) => {
         e.preventDefault();
         console.log(itemInfo)
@@ -41,17 +47,20 @@ const CreateListing = (props) => {
             changePath()
         }).catch(err => console.log(err))
     }
+
+    //set the flag for redirect
     const changePath = ()=>{
         setRedirect(true)
     }
 
+    //when the redirect state is true, render listing route
     const renderRedirect = () => {
         if (redirect) {
           return <Redirect to='/listing' />
         }
       }
     
-
+    //render elements in a component
     return ( 
     <div className="create-listing-container">
         <div>
@@ -100,7 +109,7 @@ const CreateListing = (props) => {
     </div> 
     );
 }
-
+//map state to reducers
 const mapStateToProps = (state) =>({
     user_id : state.wobbeReducer.user_id,
     username: state.wobbeReducer.username,
