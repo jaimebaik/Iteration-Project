@@ -5,7 +5,6 @@ export const ACTION_TYPES = {
     SET_USERNAME : 'SET_USERNAME',
     SET_ID : 'SET_ID',
     SET_LOCATION : 'SET_LOCATION'
-
 }
 
 export const setUsername = (username) => dispatch => {

@@ -9,9 +9,7 @@ const initialState = {
     search : {}
 }
 
-
 export const wobbeReducer = (state = initialState, action) =>{
-
     switch(action.type){
         // Not finished yet!!!!
         case ACTION_TYPES.SET_USERNAME:
@@ -40,8 +38,7 @@ export const wobbeReducer = (state = initialState, action) =>{
             return{
                 ...state,
                 location : action.payload
-            }
-            
+            }         
         default:
             return state;
         }

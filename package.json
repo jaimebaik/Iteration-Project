@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "concurrently \"nodemon server/server.js\" \"webpack serve --mode development\"",
-    "test": "jest --verbose",
+    "test": "jest",
     "start": "nodemon server/server.js"
   },
   "repository": {
