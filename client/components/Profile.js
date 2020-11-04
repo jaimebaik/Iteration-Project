@@ -43,6 +43,7 @@ const Profile = (props) => {
   }
   //to render multiple listings user made
   const cardList = userListing.map((el, index) => {
+    console.log('listing id: ',el.id);
     return <CardList key={index} {...el} />
   });
 

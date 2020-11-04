@@ -44,7 +44,8 @@ const CardList = (props) => {
                 <li className="cardlistitem"><label className="cardlabel">Location:</label> {(props.location)}</li>
             </ul>
             <button className="cardbutton" onClick={handleClick}><Link className="linktext" to={{pathname: `/item/${props.name}`}} >Details </Link></button>
-
+            <button className="cardbutton">Update</button>
+            <button className="cardbutton">Delete</button>
         </div>
      );
 }

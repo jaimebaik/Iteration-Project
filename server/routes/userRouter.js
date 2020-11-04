@@ -24,8 +24,6 @@ router.get('/login', userController.login, (req, res) => {
     
 })
 
-
-
 router.post('/signup', userController.addUser, (req,res) => {
     console.log('user added')
     res.status(200)
