@@ -7,19 +7,20 @@ import axios from 'axios';
 
 
 const CardList = (props) => {
-
+  //cardlist props using usestate to update the props's word that's being passed in to lowercase the first letter 
     const [Ownername, setOwnerName] = useState('')
 
     function capitalize(word) {
         return word[0].toUpperCase() + word.slice(1).toLowerCase();
       }
-    
+    // set's item to whatever is passed in the props 
     const handleClick =(e) =>{
         // console.log(props)
         props.setItem(props)
     }
 
     useEffect(() => {
+        // this is a fetch get request 
         console.log('inside cardlist', props)
         axios.get('http://localhost:3000/listing/searchname', { params :{ user_id : props.user_id}} )
         .then((res) => { 
