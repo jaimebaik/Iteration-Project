@@ -29,8 +29,7 @@ const App = (props) => {
 
         <Route path="/listing" component={Listing} />
 
-        <Route path="/item/:id" component={Card}
-        />
+        <Route path="/item/:id" component={Card} />
 
         <Route path="/create" component={CreateListing} />
 

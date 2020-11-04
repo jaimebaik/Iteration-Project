@@ -56,6 +56,7 @@ const Chat = (props) =>{
     }
 
     // console.log(message, messages)
+    //chat box
     return(
         <div className="chatWindow">
             <Messages {...props} messageArray={messages} owner = {props.ownername}/>

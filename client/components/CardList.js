@@ -10,7 +10,6 @@ const CardList = (props) => {
 
     const [Ownername, setOwnerName] = useState('')
 
-
     function capitalize(word) {
         return word[0].toUpperCase() + word.slice(1).toLowerCase();
       }

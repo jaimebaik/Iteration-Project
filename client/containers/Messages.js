@@ -8,7 +8,7 @@ const Messages = (props) => {
     // let x = props.messageArray
     // let y = x.map((ele,index) => <div key = {index}>{ele.text}</div>)
 
-
+    // component maps messages in message component individually
     return ( 
         <div className="messages">
             {props.messageArray.map((ele,index) => {

@@ -1,12 +1,11 @@
 const db = require("../models/databaseModel");
 const userController = {};
 
-
-
 userController.login = (req,res,next) => {
     let query = `SELECT * FROM users WHERE username = ($1) AND password = ($2);`
     let params = [req.query.username, req.query.password];
     db.query(query, params, (err, result) => {
+        console.log(result);
         if(result.rows.length === 0){
             console.log('User not found')
             res.locals.found = false
@@ -21,11 +20,6 @@ userController.login = (req,res,next) => {
        
     })
 }
-
-
-
-
-
 
 userController.addUser = (req,res,next) =>{
 
@@ -63,9 +57,5 @@ userController.findUser = (req,res,next) =>{
         }
     })
 }
-
-
-
-
 
 module.exports = userController;
