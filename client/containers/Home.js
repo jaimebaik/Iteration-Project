@@ -21,12 +21,9 @@ const Home = (props) => {
         }
         //If the props.username doesn't exist yet,
         else if(props.username ==='') setRedirect(true)
-        
     },[])
-    
     //passed in from redirect tag in Login- 
     //when you want to get something out of that state, it's actually in props.location.state- so in the location object is where you'd see the state object 
-
     const renderRedirect = () => {
         //checking if user is logged in- it they're not logged in, we set redirect to true, which re-renders and sends it to /login. There's a renderRedirect function on line 24- its a function that returns a Redirect component. If it's not true, we redirect them to the main page
         if (redirect) {
