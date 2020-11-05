@@ -23,7 +23,6 @@ app.use(bodyparser.urlencoded({ extended: true }));
 // render static index.html file
 app.use(express.static(path.join(__dirname, "../client/public")));
 
-
 app.use('/account',userRouter)
 app.use('/listing',listingRouter)
 app.use('/profile', profileRouter)

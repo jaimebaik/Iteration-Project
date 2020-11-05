@@ -3,10 +3,6 @@ const router = express.Router();
 
 const listingController = require("../controllers/listingController");
 
-
-
-
-
 router.post('/create', listingController.addListing, (req,res) => {
     res.status(200)
     res.send()

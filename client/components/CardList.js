@@ -1,9 +1,10 @@
 import React,{useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
-import * as actions from "../actions/actions"
+import * as actions from "../actions/actions";
 import {connect} from 'react-redux';
 import numeral from 'numeral';
 import axios from 'axios';
+import {Redirect} from 'react-router-dom';
 
 
 const CardList = (props) => {
@@ -15,13 +16,13 @@ const CardList = (props) => {
       }
     // set's item to whatever is passed in the props 
     const handleClick =(e) =>{
-        // console.log(props)
+        // console.log('props',props)
         props.setItem(props)
     }
 
     useEffect(() => {
         // this is a fetch get request 
-        console.log('inside cardlist', props)
+        // console.log('inside cardlist', props)
         axios.get('http://localhost:3000/listing/searchname', { params :{ user_id : props.user_id}} )
         .then((res) => { 
                 if(res.status === 204) {
@@ -44,7 +45,10 @@ const CardList = (props) => {
                 <li className="cardlistitem"><label className="cardlabel">Location:</label> {(props.location)}</li>
             </ul>
             <button className="cardbutton" onClick={handleClick}><Link className="linktext" to={{pathname: `/item/${props.name}`}} >Details </Link></button>
-
+            
+            <button className="cardbutton" onClick={handleClick}><Link className="linktext" to={{pathname: '/updateList'}}>Update</Link></button>
+            
+            <button className="cardbutton">Delete</button>
         </div>
      );
 }

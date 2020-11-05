@@ -19,7 +19,6 @@ listingController.addListing = (req, res, next) => {
   })
 }
 
-
 listingController.findListing = (req, res, next) => {
   // console.log('inside findinglisting' , req)
   // search for every item that has the name we are looking for
@@ -97,7 +96,6 @@ listingController.findName = (req, res, next) => {
   })
 }
 
-
 listingController.findAllListing = (req, res, next) => {
   // search for every item that has the name we are looking for
   let query = `select * from listings `
@@ -115,6 +113,37 @@ listingController.findAllListing = (req, res, next) => {
       next()
     }
   })
+}
+
+//middleware to update the listing info in the database
+listingController.updateListing = (req, res, next) => {
+  //get the data from params to select the listing to be updated
+  //get the data from the body to have the new info
+  const listing_id = req.params.listing_id;
+  const {name, price, location} = req.body;
+
+  console.log('listing controller update listing')
+
+  console.log('listing id',listing_id);
+  console.log('body',req.body);
+
+  //query the database with update script with corresponding data from the request
+  let query = `UPDATE listings SET name = ($1), price = ($2), location = ($3) WHERE id = ($4) RETURNING listings.*`;
+  let params = [name, price, location, listing_id];
+
+  db.query(query, params)
+  .then(updatedListing => {
+    // console.log('in listing controller update listing, returning data: ',data.rows[0]);
+    res.locals.updatedListing = updatedListing.rows[0];
+    return next();
+  })
+  .catch(err => {
+    return next({
+      log: 'From listingController.updateListing: ' + err,
+      message: { err: 'Error occurred in listingController.updateListing. Check server logs for more details.'}
+    })
+  })
+
 }
 
 module.exports = listingController;

@@ -4,6 +4,15 @@ export const ACTION_TYPES = {
     SET_SEARCH_ITEM : 'SET_SEARCH_ITEM',
     SET_USERNAME : 'SET_USERNAME',
     SET_ID : 'SET_ID',
+    SET_LOCATION : 'SET_LOCATION',
+    SET_LIST: 'SET_LIST'
+}
+
+export const setList = (listings) => dispatch => {
+    dispatch({
+        type: ACTION_TYPES.SET_LIST,
+        payload: listings
+    })
     SET_LOCATION : 'SET_LOCATION'
 }
 

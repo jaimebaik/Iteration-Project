@@ -12,6 +12,8 @@ import Signup from '../components/Signup'
 import { connect } from 'react-redux';
 import Login from './Login';
 import Profile from './Profile'
+import UpdateList from './UpdateList'
+// import { updateListing } from '../../server/controllers/listingController';
 
 const App = (props) => {
   return (
@@ -22,6 +24,8 @@ const App = (props) => {
         <Route path='/login' component={Login} />
 
         <Route path='/profile' component={Profile} />
+
+        <Route path='/updateList' component={UpdateList} />
 
         <Route path='/signup' component={Signup} />
 
