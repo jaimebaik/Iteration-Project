@@ -6,11 +6,12 @@ import numeral from 'numeral';
 import axios from 'axios';
 import {Redirect} from 'react-router-dom';
 
+const url = 'http://localhost:3000/'
 
 const CardList = (props) => {
   //cardlist props using usestate to update the props's word that's being passed in to lowercase the first letter 
     const [Ownername, setOwnerName] = useState('')
-
+    const [redirect, setRedirect] = useState(false);
     function capitalize(word) {
         return word[0].toUpperCase() + word.slice(1).toLowerCase();
       }
@@ -35,8 +36,20 @@ const CardList = (props) => {
         .catch(err => console.log(err))
         
     })
+     
+    // this func is going to hanle the delete functionality
+    const deletefunc = (e) => {
+      handleClick(e) 
+      console.log('delete is working', e)
+      console.log(props.item.id)
+      axios.delete(url + 'profile/' + props.item.id)
+      
+      .then(setRedirect(true))
+
+    }
 
     return ( 
+        redirect === false ? 
         <div className='CardList'>
             <ul className="cardcontainer">
                 <li className="cardlistitem"><label className="cardlabel">Name:</label> {Ownername}</li>
@@ -48,8 +61,13 @@ const CardList = (props) => {
             
             <button className="cardbutton" onClick={handleClick}><Link className="linktext" to={{pathname: '/updateList'}}>Update</Link></button>
             
-            <button className="cardbutton">Delete</button>
+            <button className="cardbutton" onClick={deletefunc}>Delete</button>
         </div>
+        :
+        <Redirect
+          to={{
+          pathname: '/profile'
+        }} />
      );
 }
 

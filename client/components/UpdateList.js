@@ -41,7 +41,7 @@ const UpdateList = (props) => {
             price: input.price,
             location: input.location
           })
-          setRedirect(true);
+         .then(setRedirect(true));
           
         }}>Submit</button>
       </form>
