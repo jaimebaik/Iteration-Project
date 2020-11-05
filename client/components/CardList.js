@@ -17,7 +17,6 @@ const CardList = (props) => {
       }
     // set's item to whatever is passed in the props 
     const handleClick =(e) =>{
-        // console.log('props',props)
         props.setItem(props)
     }
 
@@ -39,13 +38,10 @@ const CardList = (props) => {
      
     // this func is going to hanle the delete functionality
     const deletefunc = (e) => {
-      handleClick(e) 
-      console.log('delete is working', e)
-      console.log(props.item.id)
-      axios.delete(url + 'profile/' + props.item.id)
-      
+      handleClick(e);
+      console.log('props in delete func',props, props.item);
+      axios.delete(url + 'profile/' + props.id)
       .then(setRedirect(true))
-
     }
 
     return ( 
@@ -61,7 +57,7 @@ const CardList = (props) => {
             
             <button className="cardbutton" onClick={handleClick}><Link className="linktext" to={{pathname: '/updateList'}}>Update</Link></button>
             
-            <button className="cardbutton" onClick={deletefunc}>Delete</button>
+            <button className="cardbutton" onClick={(e) => deletefunc(e)}>Delete</button>
         </div>
         :
         <Redirect
