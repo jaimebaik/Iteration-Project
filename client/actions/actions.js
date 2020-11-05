@@ -13,6 +13,7 @@ export const setList = (listings) => dispatch => {
         type: ACTION_TYPES.SET_LIST,
         payload: listings
     })
+    SET_LOCATION : 'SET_LOCATION'
 }
 
 export const setUsername = (username) => dispatch => {

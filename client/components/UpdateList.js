@@ -44,6 +44,10 @@ const UpdateList = (props) => {
             
             setRedirect(true);
           })
+<<<<<<< HEAD
+=======
+         .then(setRedirect(true));
+>>>>>>> Delete
           
         }}>Submit</button>
       </form>

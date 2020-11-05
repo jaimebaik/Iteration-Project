@@ -8,5 +8,8 @@ router.patch('/:listing_id', listingController.updateListing, (req, res) => {
   return res.status(200).json(res.locals.updatedListing);
 });
 
+router.delete('/:listing_id', listingController.deleteListing, (req, res) => {
+  return res.status(200).json(res.locals.deleteListing);
+});
 
 module.exports = router;

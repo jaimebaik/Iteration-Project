@@ -109,7 +109,7 @@ const CreateListing = (props) => {
     </div> 
     );
 }
-//map state to reducers
+//map state to props using reducers
 const mapStateToProps = (state) =>({
     user_id : state.wobbeReducer.user_id,
     username: state.wobbeReducer.username,
