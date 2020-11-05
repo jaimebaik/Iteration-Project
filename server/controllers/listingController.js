@@ -146,4 +146,27 @@ listingController.updateListing = (req, res, next) => {
 
 }
 
+listingController.deleteListing = (req, res, next) => {
+  // this is storing the card's id storing it into listing_id variable
+  const listing_id = req.params.listing_id;
+  
+  //query the database with delete script with corresponding data from the request
+  let deleteList = `DELETE FROM listings WHERE id = ${listing_id}`;
+  
+
+  db.query(deleteList)
+  .then(deleteListing => {
+    // console.log('in listing controller update listing, returning data: ',data.rows[0]);
+    res.locals.deleteListing = deleteListing.rows[0];
+    return next();
+  })
+  .catch(err => {
+    return next({
+      log: 'From listingController.updateListing: ' + err,
+      message: { err: 'Error occurred in listingController.updateListing. Check server logs for more details.'}
+    })
+  })
+
+}
+
 module.exports = listingController;
