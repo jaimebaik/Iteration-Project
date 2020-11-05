@@ -122,6 +122,11 @@ listingController.updateListing = (req, res, next) => {
   const listing_id = req.params.listing_id;
   const {name, price, location} = req.body;
 
+  console.log('listing controller update listing')
+
+  console.log('listing id',listing_id);
+  console.log('body',req.body);
+
   //query the database with update script with corresponding data from the request
   let query = `UPDATE listings SET name = ($1), price = ($2), location = ($3) WHERE id = ($4) RETURNING listings.*`;
   let params = [name, price, location, listing_id];

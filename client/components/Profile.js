@@ -13,7 +13,6 @@ const mapStateToProps = (state) => ({
   username: state.wobbeReducer.username
 })
 
-
 const Profile = (props) => {
   //state props of user listing and flag for redirect
   const [userListing, setUserListing] = useState([]);
@@ -43,7 +42,7 @@ const Profile = (props) => {
   }
   //to render multiple listings user made
   const cardList = userListing.map((el, index) => {
-    console.log('listing id: ',el.id);
+    // console.log('listing id: ',el.id);
     return <CardList key={index} {...el} />
   });
 
