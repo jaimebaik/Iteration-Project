@@ -20,19 +20,28 @@ const UpdateList = (props) => {
   return (
     redirect === false ? 
     <div className='updateListContainer'>
-      <form>
-        <label>Item:</label>
-        <input type='text' value={input.item} onChange={e => {
-          setInput({...input, item: e.target.value})
-        }}></input>
-        <label>Price:</label>
-        <input type='text' value={input.price} onChange={e => {
-          setInput({...input, price: e.target.value})
-        }}></input>
-        <label>Location:</label>
-        <input type='text' value={input.location} onChange={e => {
-          setInput({...input, location: e.target.value})
-        }}></input>
+      <form className='updateForm'>
+      <h1>Update your WOBBE UP!</h1>
+        <div className='inputWrapper'>
+          <div className='itemInput'>
+          <label>Item:</label>
+          <input type='text' value={input.item} onChange={e => {
+            setInput({...input, item: e.target.value})
+          }}></input>
+          </div>
+          <div className='priceInput'>
+          <label>Price:</label>
+          <input type='text' value={input.price} onChange={e => {
+            setInput({...input, price: e.target.value})
+          }}></input>
+          </div>
+          <div className='locationInput'>
+          <label>Location: </label>
+          <input type='text' value={input.location} onChange={e => {
+            setInput({...input, location: e.target.value})
+          }}></input>
+          </div>
+        </div>
         <button onClick={e => {
           e.preventDefault();
 
@@ -44,6 +53,7 @@ const UpdateList = (props) => {
             
             setRedirect(true);
           })
+
           
         }}>Submit</button>
       </form>
