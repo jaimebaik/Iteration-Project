@@ -53,11 +53,13 @@ const CardList = (props) => {
                 <li className="cardlistitem"><label className="cardlabel">Price:</label> ${numeral(props.price).format('0,0')}</li>
                 <li className="cardlistitem"><label className="cardlabel">Location:</label> {(props.location)}</li>
             </ul>
+            {!props.isProfile ? 
             <button className="cardbutton" onClick={handleClick}><Link className="linktext" to={{pathname: `/item/${props.name}`}} >Details </Link></button>
-            
-            <button className="cardbutton" onClick={handleClick}><Link className="linktext" to={{pathname: '/updateList'}}>Update</Link></button>
-            
-            <button className="cardbutton" onClick={(e) => deletefunc(e)}>Delete</button>
+            :
+            (<><button className="cardbutton" onClick={handleClick}><Link className="linktext" to={{pathname: `/item/${props.name}`}} >Details </Link></button>
+            <button id='updateButton' className="cardbutton" onClick={handleClick}><Link className="linktext" to={{pathname: '/updateList'}}>Update</Link></button>
+            <button id='deleteButton' className="cardbutton" onClick={(e) => deletefunc(e)}>Delete</button></>)
+            }   
         </div>
         :
         <Redirect

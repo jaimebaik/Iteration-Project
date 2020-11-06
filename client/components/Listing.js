@@ -14,6 +14,7 @@ const url = 'http://localhost:3000/'
 const Listing = (props) => {
   //create an array of cards
   const [library, setLibrary] = useState([]);
+  const [profile, setProfile] = useState(false);
 
   useEffect(() => {
     // console.log(props.search)
@@ -71,7 +72,7 @@ const Listing = (props) => {
 
   //creating an array of listing card for each item in the library state
   const cardList = library.map((el, index) => {
-    return <CardList key={index} {...el} />
+    return <CardList key={index} {...el} isProfile={profile}/>
   })
 
   //listing component that contains array of cardList components and footer

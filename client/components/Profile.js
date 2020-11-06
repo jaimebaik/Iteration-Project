@@ -17,6 +17,7 @@ const Profile = (props) => {
   //state props of user listing and flag for redirect
   const [userListing, setUserListing] = useState([]);
   const [redirect, setRedirect] = useState(false);
+  const [profile, setProfile] = useState(true);
 
   //when the profil mounts, check if user is logged in
   useEffect(() => {
@@ -43,7 +44,7 @@ const Profile = (props) => {
   //to render multiple listings user made
   const cardList = userListing.map((el, index) => {
     // console.log('listing id: ',el.id);
-    return <CardList key={index} {...el} />
+    return <CardList key={index} {...el} isProfile={profile} />
   });
 
   //if the user is logged in, render elements in profile including listings with card

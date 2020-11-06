@@ -1,6 +1,6 @@
 .CardList {
     width: 13em;
-    height: 12em;
+    height: 13em;
     margin: 1em;
     padding: 1em;
     border: none;
@@ -52,4 +52,10 @@
 .cardbutton:hover {
     background: $lightbg;
     color: $header;
+}
+#updateButton {
+    margin: 0.1em;
+}
+#deleteButton {
+    margin: 0.1em;
 }
